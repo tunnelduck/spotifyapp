@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .container(ng-app='spartinHouseApp', ng-controller='spotifyController')
+    spotify
+    script(type="text/ng-template" id="spotifyComponent.html")
+      .row
+        .col-lg-12
+            form.form-horizontal(ng-submit='$ctrl.submit()' name='spotifyform')
+                div.form-group
+                    label.col-sm-2.control-label(for='name') Name
+                    div.col-sm-10
+                        input.form-control(type='text' id='name' placeholder='name' ng-model='$ctrl.name' required='')
+                div.form-group
+                    label.col-sm-2.control-label(for='email') Email
+                    div.col-sm-10
+                        input.form-control(type='email' id='email' placeholder='email' ng-model='$ctrl.email' required='')
+                div.form-group
+                    label.col-sm-2.control-label(for='song') Song
+                    div.col-sm-2
+                        button.btn.btn-default(type='button' ng-click='$ctrl.chooseSongToggle(true)') Choose Song
+                    div.col-sm-8
+                        p.form-control-static(ng-show='$ctrl.song')
+                            strong {{$ctrl.song.trackTitle}}
+                            span(style='margin:0 5px') by
+                            strong {{$ctrl.song.artist}}
+                div.form-group(ng-show='$ctrl.isChoosingSong')
+                    div.row
+                        div.input-group.col-offset-sm-2
+                            input.form-control(type='text' ng-model='$ctrl.songSearch' ng-keyup='$event.keyCode == 13 && $ctrl.searchSongs(true)')
+                            span.input-group-btn
+                                button.btn.btn-info(type='button' data-ng-click='$ctrl.searchSongs(true)')
+                                    span.glyphicon.glyphicon-search(aria-hidden='true') &nbsp;
+                    
+                    div.row(ng-show='$ctrl.songs.length > 0')
+                        uib-pagination.pagination-sm(total-items='$ctrl.total' ng-model='$ctrl.pageNum' items-per-page='$ctrl.pageSize' max-size='10' boundary-link-numbers='true' rotate='false' ng-change='$ctrl.searchSongs()')
+                        table.table.table-striped.table-bordered
+                            thead
+                                tr
+                                    th &nbsp;
+                                    th Track
+                                    th Artist
+                                tbody
+                                    tr(ng-repeat='song in $ctrl.songs')
+                                        td 
+                                            button.btn.btn-default(ng-click='$ctrl.selectSong(song)' type='button') Select
+                                        td {{song.trackTitle}}
+                                        td {{song.artist}}
+                button.btn.btn-primary(type='submit') Submit
+                
+  script(src="/javascripts/bundle.js" type="text/javascript")
+        
+        

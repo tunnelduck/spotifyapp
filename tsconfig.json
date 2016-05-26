@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "none",
+        "sourceMap": true,
+        "rootDir": "./client"
+        //"outDir": "./../public/javascripts/output.js"
+    },
+    "filesGlob": [
+        "./typings/**/*d.ts"
+        //"./**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
