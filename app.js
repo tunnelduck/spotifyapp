@@ -15,11 +15,11 @@ var mongoose = require('mongoose');
 
 
 //todo, pull from environment
-mongoose.connect("mongodb://localhost/spartinhouse-dev", null);
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: ' + err);
-  process.exit(-1);
-});
+// mongoose.connect("mongodb://localhost/spartinhouse-dev", null);
+// mongoose.connection.on('error', function(err) {
+//   console.error('MongoDB connection error: ' + err);
+//   process.exit(-1);
+// });
 
 var app = express();
 
