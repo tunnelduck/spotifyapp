@@ -1,8 +1,20 @@
 doctype html
 html
   head
-    title= title
+    title Spartin House
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" type="text/javascript")
   body
+    nav(class="navbar navbar-default navbar-static-top")
+      div(class="container")
+        div(class="navbar-header")
+          a(class="navbar-brand" href="/") SpartinHouse
+        div(id="navbar" class="navbar-collapse collapse")
+          ul(class="nav navbar-nav")
+            li
+              a(href="/") Home
+            li
+              a(href="/playlist") Playlist
+            li
+              a(href="/rsvp") Rsvp
     block content

@@ -13,6 +13,21 @@ export class SpotifyService {
 
     }
     
+    public saveSubmission(name: string, email: string, songId: string, comment:string): ng.IPromise<any> {
+        return this.httpService({
+            method: 'POST',
+            url: '/api/spotify',
+            data: {
+                name: name,
+                email: email,
+                songId: songId,
+                comment: comment
+            }
+        }).then(function(response) {
+            return response.data;
+        })
+    }
+    
     constructor($http:ng.IHttpService) {
         this.httpService = $http;
     }

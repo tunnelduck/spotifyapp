@@ -9,23 +9,18 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var spotifyController = require('./server/api/spotifyController');
 
-var mongoose = require('mongoose');
-
-
-
-
-//todo, pull from environment
-// mongoose.connect("mongodb://localhost/spartinhouse-dev", null);
-// mongoose.connection.on('error', function(err) {
-//   console.error('MongoDB connection error: ' + err);
-//   process.exit(-1);
-// });
-
 var app = express();
 
 if ( app.get('env') === 'development' ) {
     require('./config.js');
 }
+
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL + '/' + process.env.MONGO_DB, null);
+mongoose.connection.on('error', function(err) {
+  console.error('MongoDB connection error: ' + err);
+  process.exit(-1);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,9 +34,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//views
 app.use('/', routes);
 app.use('/users', users);
+app.use('/playlist', require('./routes/playlist'));
+app.use('/rsvp', require('./routes/rsvp'));
+
+//api
 app.use('/api/spotify', spotifyController);
+app.use('/api/rsvp', require('./server/api/rsvpController'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

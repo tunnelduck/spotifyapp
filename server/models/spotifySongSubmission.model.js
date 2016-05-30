@@ -1,12 +1,16 @@
 'use strict';
 
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
 var SpotifySongSubmissionSchema = new mongoose.Schema({
   name: String,
   email: String,
   songId: String,
-  active: Boolean
+  active: Boolean,
+  comment: String,
+  submissionDate: { type: Date, default: Date.now }
 });
 
-export default mongoose.model('SpotifySongSubmission', SpotifySongSubmissionSchema);
+module.exports = {
+  model: mongoose.model('SpotifySongSubmission', SpotifySongSubmissionSchema)
+}

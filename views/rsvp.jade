@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container(ng-app='spartinHouseRsvpApp', ng-controller='rsvpController')
+    .row
+        .col-lg-12
+            h1 Rsvp
+    rsvp
+    script(type="text/ng-template" id="rsvpComponent.html")
+      .row(ng-if='!$ctrl.submissionSuccess')
+        .col-lg-12
+           
+            form.form-horizontal(ng-submit='$ctrl.submit()' name='rsvpform')
+                div.form-group
+                    label.col-sm-2.control-label(for='name') Name
+                    div.col-sm-10
+                        input.form-control(type='text' id='name' placeholder='name' ng-model='$ctrl.name' required='')
+                div.form-group
+                    div.col-sm-offset-2
+                        label.radio-inline
+                            input(type="radio" name="inlineRadioOptions" id="inlineRadio1" value="true" required='' ng-model='$ctrl.isAttending') 
+                            | accept with pleasure
+                        label.radio-inline
+                            input(type="radio" name="inlineRadioOptions" id="inlineRadio2" value="false" ng-model='$ctrl.isAttending') 
+                            | decline with regret
+                div.form-group(ng-show='$ctrl.isAttending == "true"')
+                    label.col-sm-2.control-label(for='party') Total Party #
+                    div.col-sm-10
+                        input.form-control(type='number' id='party' placeholder='' ng-model='$ctrl.partyTotal' ng-required='$ctrl.isAttending == "true"')
+                div.col-sm-offset-2
+                    button.btn.btn-primary(type='submit' ng-disabled='$ctrl.isSaving') Submit
+      .row(ng-show='$ctrl.submissionSuccess')
+        p.text-center.text-success Thank You For Your Rsvp!
+    
+  script(src="/javascripts/bundle.js" type="text/javascript")

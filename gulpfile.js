@@ -25,7 +25,7 @@ var tsify = require('tsify');
 
 // add custom browserify options here
 var customOpts = {
-  entries: ['./client/spotify/spotify.controller.ts'],
+  entries: ['./client/spotify/spotify.controller.ts', './client/rsvp/rsvp.controller.ts'],
   debug: true
 };
 var opts = assign({}, watchify.args, customOpts);
