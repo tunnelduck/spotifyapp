@@ -40,7 +40,7 @@ block content
                                     span.glyphicon.glyphicon-search(aria-hidden='true') &nbsp;
                     
                     div.row
-                        p(class="text-info") song search is via spotify, hence must exist in spotify
+                        p(class="text-info") Song search is via Spotify, if you don't see your song returned, it may not be in the Spotify catalog at this time.
                     
                     div.row(ng-show='$ctrl.songs.length > 0')
                         uib-pagination.pagination-sm(total-items='$ctrl.total' ng-model='$ctrl.pageNum' items-per-page='$ctrl.pageSize' max-size='10' boundary-link-numbers='true' rotate='false' ng-change='$ctrl.searchSongs()')
