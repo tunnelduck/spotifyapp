@@ -1,5 +1,40 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+var HomeComponent = (function () {
+    function HomeComponent() {
+        this.myInterval = 5000;
+        this.noWrapSlides = false;
+        this.slides = [
+            {
+                image: '/images/1.png', text: '', id: 0
+            },
+            {
+                image: '/images/2.png', text: '', id: 1
+            },
+            {
+                image: '/images/3.png', text: '', id: 2
+            },
+            {
+                image: '/images/4.png', text: '', id: 3
+            },
+            {
+                image: '/images/5.png', text: '', id: 4
+            },
+            {
+                image: '/images/6.png', text: '', id: 5
+            }
+        ];
+    }
+    return HomeComponent;
+}());
+exports.HomeComponent = HomeComponent;
+angular.module('spartinHouseHomeApp', ['ui.bootstrap', 'ngAnimate']).controller('homeController', function () {
+}).component('home', {
+    controller: HomeComponent,
+    template: "\n      <uib-carousel active=\"active\" interval=\"$ctrl.myInterval\" no-wrap=\"$ctrl.noWrapSlides\">\n        <uib-slide ng-repeat=\"slide in $ctrl.slides track by slide.id\" index=\"slide.id\">\n          <img ng-src=\"{{slide.image}}\" style=\"margin:auto;\">\n        </uib-slide>\n      </uib-carousel>"
+});
+},{}],2:[function(require,module,exports){
+"use strict";
 var RsvpComponent = (function () {
     function RsvpComponent(rsvpService) {
         this.submissionSuccess = false;
@@ -50,7 +85,7 @@ angular.module('spartinHouseRsvpApp', []).controller('rsvpController', function 
     controller: RsvpComponent,
     templateUrl: 'rsvpComponent.html'
 });
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 var spotify_service_1 = require('./spotify.service');
 var SpotifyComponent = (function () {
@@ -113,7 +148,7 @@ angular.module('spartinHouseApp', ['ui.bootstrap']).controller('spotifyControlle
     controller: SpotifyComponent,
     templateUrl: 'spotifyComponent.html'
 });
-},{"./spotify.service":3}],3:[function(require,module,exports){
+},{"./spotify.service":4}],4:[function(require,module,exports){
 "use strict";
 var SpotifyService = (function () {
     function SpotifyService($http) {
@@ -144,7 +179,7 @@ var SpotifyService = (function () {
     return SpotifyService;
 }());
 exports.SpotifyService = SpotifyService;
-},{}]},{},[2,1])
+},{}]},{},[3,2,1])
 
 
 //# sourceMappingURL=bundle.js.map

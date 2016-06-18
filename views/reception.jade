@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  .container
+    .row
+        .col-lg-12
+            h1 Welcome Home Reception
+            p 
+                | Join us after we return for hors d'oeuvres and drinks on August 20, 2016 at the Palm Court at Bartin Creek Country Club from 5-8 p.m. 
+                br
+                |Attire: casual
+
+            h3 Directions
+            p 
+                | The Palm Court is located inside the main clubhouse of Barton Creek Country Club. 
+                br
+                | From Bee Caves Road, turn onto Barton Creek Boulevard and go 1.8 miles. 
+                br
+                | Turn Left on Barton Club Drive
+                br
+                | Proceed to the Main Clubhouse Entrance (first entrance on the left).
+                br
+                | The Palm Court is located at the back of the Main Clubhouse.
+                br
+                br
+                | Should you wish to stay at the Resort, a courtesy block of rooms has been reserved
+                | at a discounted rate. Please call 512.329.4616 and reference Sprouse 
+                | Wedding Celebration to reserve. 
+                br
+                br
+                | 8212 Barton Club Drive
+                br
+                | Austin, TX
+                script(src='https://maps.googleapis.com/maps/api/js?v=3.exp')
+                div(style='overflow:hidden;height:440px;width:700px;align:center')
+                    div(id='gmap_canvas' style='height:440px;width:700px;')
+                    div
+                        small
+                            a(href="http://embedgooglemaps.com") embed google maps
+                    div
+                        small
+                            a(href="https://termsofusegenerator.net") terms of use
+                        example
+                    style
+                        | #gmap_canvas img{max-width:none!important;background:none!important}
+
+                script(type='text/javascript')
+                    | function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(30.2910848,-97.85871689999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(30.2910848,-97.85871689999999)});infowindow = new google.maps.InfoWindow({content:'<strong>Barton Creek Country Club<\/strong><br>8212 Barton Club Dr, Austin, TX, 78735<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
+

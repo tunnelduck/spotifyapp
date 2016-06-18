@@ -1,17 +1,3 @@
-// var gulp = require('gulp');
-// var ts = require('gulp-typescript');
- 
-//  var tsProject = ts.createProject('./client/tsconfig.json');
- 
-
-// gulp.task('scripts', function() {
-//     var tsResult = tsProject.src()
-//         .pipe(ts(tsProject));
-
-//     return tsResult.js.pipe(gulp.dest('public/javascripts'));
-// });
-
-
 
 var watchify = require('watchify');
 var browserify = require('browserify');
@@ -25,7 +11,7 @@ var tsify = require('tsify');
 
 // add custom browserify options here
 var customOpts = {
-  entries: ['./client/spotify/spotify.controller.ts', './client/rsvp/rsvp.controller.ts'],
+  entries: ['./client/spotify/spotify.controller.ts', './client/rsvp/rsvp.controller.ts', './client/home/home.controller.ts'],
   debug: true
 };
 var opts = assign({}, watchify.args, customOpts);
