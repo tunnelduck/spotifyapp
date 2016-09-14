@@ -40,6 +40,7 @@ app.use('/users', users);
 app.use('/playlist', require('./routes/playlist'));
 app.use('/rsvp', require('./routes/rsvp'));
 app.use('/reception', require('./routes/receptionDetails'));
+app.use('/wedding', require('./routes/wedding'));
 
 //api
 app.use('/api/spotify', spotifyController);

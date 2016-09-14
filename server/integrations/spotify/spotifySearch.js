@@ -28,11 +28,11 @@ function searchWithToken (trackTitle, pageNum, body) {
     // use the access token to access the Spotify Web API
     var token = body.access_token;
     var options = {
-    url: 'https://api.spotify.com/v1/search/?type=track&q=' + encodeURI(trackTitle) + '&offset=' + (20 * (pageNum - 1)),
-    headers: {
-        'Authorization': 'Bearer ' + token
-    },
-    json: true
+        url: 'https://api.spotify.com/v1/search/?type=track&q=' + encodeURI(trackTitle) + '&offset=' + (20 * (pageNum - 1)),
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        json: true
     };
     return request.get(options);
 }
